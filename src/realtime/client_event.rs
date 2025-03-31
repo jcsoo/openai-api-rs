@@ -58,7 +58,18 @@ pub struct ConversationItemDelete {
 pub struct ResponseCreate {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub event_id: Option<String>,
-    pub response: Option<Session>,
+    pub response: Option<Response>,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone, Default)]
+pub struct Response {
+    pub conversation: Option<String>,
+    pub instructions: Option<String>,
+    pub max_output_tokens: Option<u32>,
+    pub modalities: Option<Vec<String>>,
+    pub output_audio_format: Option<String>,
+    pub temperature: Option<f32>,
+    pub voice: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, Default)]
